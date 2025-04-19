@@ -1,0 +1,203 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f8;
+    color: #4a4a4a;
+}
+
+/* Container */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 150px;
+    background-color: #4a4a8a;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar-profile {
+    margin-bottom: 50px;
+}
+
+.profile-icon {
+    width: 190px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s, color 0.3s;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.sidebar-nav a:hover {
+    background-color: #3a3a6a;
+    color: #e0e0ff;
+    border-radius: 10px;
+}
+
+.nav-icon {
+    width: 100px;
+    height: 70px;
+}
+
+.logout a {
+    text-decoration: none;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.logout a:hover {
+    background-color: #3a3a6a;
+    border-radius: 5px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-left: 150px;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url('/static/img/bg for log in.png') no-repeat center center;
+    height: 200px;    
+    margin-bottom: 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center; /* Vertically align the text and icon */
+    justify-content: flex-start; /* Align content to the left */
+    gap: 0px; /* Add space between the text and the icon */
+    color: #fff;
+    font-size: 18px; /* Adjust font size for the text */
+    font-weight: bold;
+    margin-right: 20px; /* Adjust margin to position the content */
+    text-align: right; /* Ensure text aligns properly */
+}
+
+.profile-2 {
+    order: 2; /* Move the profile icon to the right of the text */
+    width: 200px; /* Adjust size for better alignment */
+    height: 150px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image fits within the circle */
+}
+.dashboard-header {
+    margin-bottom: 20px;
+}
+
+/* Settings Content */
+.settings-content {
+    background-color: #f3f3f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.settings-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a4a8a;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dcdcf2;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #4a4a4a;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.settings-item:hover {
+    background-color: #c4c4e8;
+}
+
+.settings-item i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.toggle-switch {
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background-color: #ccc;
+    border-radius: 10px;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.toggle-switch:checked {
+    background-color: #4a4a8a;
+}
+
+.toggle-switch:checked::before {
+    left: 20px;
+}
+
+.toggle-switch::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    transition: left 0.3s;
+}

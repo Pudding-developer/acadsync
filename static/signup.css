@@ -1,0 +1,115 @@
+/* Reset/Basic styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Background with purple overlay */
+.background-image {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    background: rgba(139, 114, 161, 0.6)
+        url('/static/img/bg for log in.png') center center/cover no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Centered content */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+}
+
+/* Header */
+.header h1 {
+    color: #fff;
+    font-size: 2.1rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 0 3px 16px rgba(0,0,0,0.15);
+}
+
+.login-link {
+    color: #fff;
+    font-size: 0.97rem;
+    text-align: center;
+    margin-bottom: 22px;
+}
+.login-link a {
+    color: #FFFAD2;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* Signup box */
+.signup-box {
+    width: 650px;
+    max-width: 94vw;
+    background: rgba(139, 114, 161, 0.6); /* Significantly lowered opacity */
+    border-radius: 32px;
+    box-shadow: 0 4px 24px rgba(73, 53, 103, 0.11);
+    padding: 40px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Form styles */
+.signup-box h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.signup-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.signup-box label {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.signup-box input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.signup-box button {
+    background: #6A457A;
+    color: #fff; /* Changed text color to white */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 200px;
+    margin: 0 auto; /* Centers the button */
+    display: block; /* Ensures margin auto works */
+}
+
+.signup-box button:hover {
+    box-shadow: 0 0 8px #AA87C4;
+}

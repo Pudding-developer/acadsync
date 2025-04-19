@@ -1,0 +1,192 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f8;
+    color: #4a4a4a;
+}
+
+/* Container */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 150px;
+    background-color: #4a4a8a;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    height: 100vh; /* Ensure the sidebar spans the full height of the viewport */
+    position: fixed; /* Fix the sidebar to the left of the screen */
+    top: 0;
+    left: 0;
+}
+.sidebar-profile {
+    margin-bottom: 50px;
+}
+
+.profile-icon {
+    width: 190px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s, color 0.3s;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.sidebar-nav a:hover {
+    background-color: #3a3a6a;
+    color: #e0e0ff; /* Optional: Change text color on hover */
+    border-radius: 10px;
+}
+
+.nav-icon {
+    width: 100px;
+    height: 70px;
+}
+
+.logout a {
+    text-decoration: none;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.logout a:hover {
+    background-color: #3a3a6a;
+    border-radius: 5px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-left: 150px; /* Add margin to account for the fixed sidebar width */
+}
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url('/static/img/bg for log in.png') no-repeat center center;
+    height: 200px;    
+    margin-bottom: 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center; /* Vertically align the text and icon */
+    justify-content: flex-start; /* Align content to the left */
+    gap: 0px; /* Add space between the text and the icon */
+    color: #fff;
+    font-size: 18px; /* Adjust font size for the text */
+    font-weight: bold;
+    margin-right: 20px; /* Adjust margin to position the content */
+    text-align: right; /* Ensure text aligns properly */
+}
+
+.profile-2 {
+    order: 2; 
+    width: 200px; 
+    height: 150px;
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+/* Content Row */
+.content-row {
+    display: flex;
+    gap: 20px;
+}
+
+.todo-box, .completed-box {
+    flex: 1;
+    background-color: #dcdcf2;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo-header, .completed-header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #4a4a8a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.todo-header {
+    background-color: #8174AB;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.completed-header {
+    background-color: #8174AB;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.todo-item, .completed-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f3f3f8;
+    border-radius: 10px;
+}
+
+.todo-icon, .completed-icon {
+    font-size: 24px;
+    color: #4a4a8a;
+}
+
+.todo-details, .completed-details {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.todo-due {
+    font-size: 14px;
+    color: #4a4a8a;
+}
+
+.scroll-down {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #4a4a8a;
+}

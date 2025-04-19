@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* --- LEFT SIDE --- */
+.left {
+  flex: 1;
+  background: 
+    linear-gradient(rgba(68, 61, 105, 0.48), rgba(68, 61, 105, 0.48)),
+    url('/static/img/FINAL PIC INTRO.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay {
+  color: #fff;
+  text-align: center;
+  max-width: 450px;
+  padding: 20px 30px 40px 30px;
+}
+.join-btn {
+  background: rgba(181, 179, 223, 0.42);
+  color: #47398b;
+  font-weight: bold;
+  border: none;
+  border-radius: 24px;
+  padding: 11px 30px;
+  font-size: 1.1rem;
+  margin-bottom: 38px;
+  margin-top: 16px;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 2px 12px rgba(70,60,160,0.09);
+}
+.join-btn:hover {
+  background: rgba(181, 179, 223, 0.7);
+}
+.overlay h1 {
+  margin: 0;
+  margin-top: 24px;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.16;
+  text-shadow: 0 2px 16px rgba(40,20,80,0.13);
+}
+
+/* --- RIGHT SIDE --- */
+.right {
+  flex: 1;
+  background: linear-gradient(to bottom, #c8bfe7 0%, #96b3d6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  width: 100px; /* Sets the width of the logo */
+  height: 100px; /* Sets the height of the logo */
+  display: block; /* Ensures the image behaves as a block element */
+  margin: 0 auto; /* Centers the logo horizontally */
+}
+
+/* ----- Card ----- */
+.signup-card {
+  background: rgba(255,255,255,0.28);
+  border-radius: 28px;
+  box-shadow: 0 6px 36px 0 rgba(120,100,160,0.10);
+  padding: 42px 38px 42px 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 345px;
+  max-width: 395px;
+  margin: 0 auto;
+}
+.illustration {
+  margin-bottom: 13px;
+}
+.illustration img {
+  width: 168px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+/* Typography */
+.signup-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 2px 0 2px 0;
+  color: #624f9c;
+  letter-spacing: 0.7px;
+  text-align: center;
+}
+.signup-card .welcome {
+  font-size: 1.01em;
+  color: #7d6eb3;
+  margin-bottom: 18px;
+  margin-top: 0;
+  text-align: center;
+}
+.signup-card h3 {
+  margin: 0 0 22px 0;
+  font-size: 1.35rem;
+  color: #3a2e5e;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Buttons */
+.account-btn, .gmail-btn {
+  width: 100%;
+  padding: 18px 0 15px 0;
+  border-radius: 22px;
+  margin: 0 0 18px 0;
+  font-size: 1.18rem;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s;
+  box-shadow: 0 3px 18px 0 rgba(80,70,120,0.07);
+  background: #b5b3df;
+  color: #453082;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-btn {
+  background: #b5b3df;
+  color: #453082;
+  margin-bottom: 15px;
+}
+
+.account-btn:hover {
+  background: #cbc8ec;
+  box-shadow: 0 3px 18px 0 rgba(80,70,120,0.15);
+  transform: translateY(-1px);
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+.account-btn:active {
+  transform: translateY(0px);
+  box-shadow: 0 3px 18px 0 rgba(80,70,120,0.07);
+}
+
+.gmail-icon {
+  width: 100px; /* Adjust size for better alignment */
+  height: 60px;
+  display: block;
+  transform: translateX(-30px); /* Translate the X-axis by -2px */
+}
+
+
+.gmail-btn:hover {
+  background: #cbc8ec;
+  box-shadow: 0 3px 18px 0 rgba(80,70,120,0.15);
+  transform: translateY(-1px);
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+.gmail-btn:active {
+  transform: translateY(0px);
+  box-shadow: 0 3px 18px 0 rgba(80,70,120,0.07);
+}
+.gmail-text {
+  margin-left: -50px; /* Adjust spacing between icon and text */
+  font-size: 1.18rem;
+  font-weight: bold;
+  color: #453082;
+}

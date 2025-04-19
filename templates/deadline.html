@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadlines</title>
+    <link rel="stylesheet" href="/static/deadline.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-profile">
+                <img src="/static/img/logo.png" alt="Profile Icon" class="profile-icon">
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/homepage">
+                    <img src="/static/img/home.png" alt="Home Icon" class="nav-icon">
+                    <span>Home</span>
+                </a>
+                <a href="/classes">
+                    <img src="/static/img/classroom.png" alt="Classes Icon" class="nav-icon">
+                    <span>Classes</span>
+                </a>
+                <a href="/deadlines" class="active">
+                    <img src="/static/img/deadlines.png" alt="Deadlines Icon" class="nav-icon">
+                    <span>Deadlines</span>
+                </a>
+                <a href="/settings">
+                    <img src="/static/img/settings.png" alt="Settings Icon" class="nav-icon">
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="logout">
+                <a href="/logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="background-img"></div>
+                <div class="header-right">
+                    <img src="/static/img/profile 2.png" alt="profile-2" class="profile-2">
+                    <span>Name of the Student</span>
+                </div>
+            </header>
+            <section class="dashboard">
+                <div class="content-row">
+                    <div class="todo-box">
+                        <div class="todo-header">To Do:</div>
+                        <div class="todo-item">
+                            <div class="todo-icon"><i class="fa fa-pencil"></i></div>
+                            <div class="todo-details">
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="todo-due">Due Date: Time</div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-icon"><i class="fa fa-pencil"></i></div>
+                            <div class="todo-details">
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="todo-due">Due Date: Time</div>
+                        </div>
+                        <div class="scroll-down">Scroll down for more</div>
+                    </div>
+                    <div class="completed-box">
+                        <div class="completed-header">Completed:</div>
+                        <div class="completed-item">
+                            <div class="completed-icon"><i class="fa fa-check-circle"></i></div>
+                            <div class="completed-details">
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="completed-item">
+                            <div class="completed-icon"><i class="fa fa-check-circle"></i></div>
+                            <div class="completed-details">
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

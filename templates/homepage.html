@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="\static\homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-profile">
+                <img src="/static/img/logo.png" alt="Profile Icon" class="profile-icon">
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="active">
+                    <img src="/static/img/home.png" alt="Home Icon" class="nav-icon">
+                    <span>Home</span>
+                </a>
+                <a href="#">
+                    <img src="/static/img/classroom.png" alt="Classes Icon" class="nav-icon">
+                    <span>Classes</span>
+                </a>
+                <a href="#">
+                    <img src="/static/img/deadlines.png" alt="Deadlines Icon" class="nav-icon">
+                    <span>Deadlines</span>
+                </a>
+                <a href="#">
+                    <img src="/static/img/settings.png" alt="Settings Icon" class="nav-icon">
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="logout">
+                <a href="#">
+                    <i class="fa fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+                <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const homeLink = document.querySelector('.sidebar-nav a.active');
+        homeLink.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            window.location.href = '/homepage'; // Replace '/homepage' with the actual homepage URL
+        });
+
+        const classesLink = document.querySelector('.sidebar-nav a:nth-child(2)'); // Select the second link (Classes)
+        classesLink.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            window.location.href = '/classes'; // Navigate to classes.html
+        });
+
+        const deadlinesLink = document.querySelector('.sidebar-nav a:nth-child(3)'); // Select the third link (Deadlines)
+        deadlinesLink.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            window.location.href = '/deadlines'; // Navigate to deadlines.html
+        });
+    });
+</script>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="background-img">
+                </div>
+                <div class="header-right">
+                    <img src="/static/img/profile 2.png" alt="profile-2" class="profile-2">                    <span>Name of the Student</span>
+                </div>
+            </header>
+            <section class="dashboard">
+                <div class="dashboard-header">
+                    <h2>STUDENT DASHBOARD</h2>
+                    <span class="welcome">Welcome, <span>{Name}</span>!</span>
+                </div>
+                <div class="announcements">
+                    <span><i class="fa fa-bell"></i> Announcements</span>
+                </div>
+                <div class="content-row">
+                    <div class="main-box">
+                        <div class="todo-list">
+                            <h3>To-Do List</h3>
+                            <ul class="todo-items">
+                                <li>
+                                    <input type="checkbox" id="task1">
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="task2">
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="task3">
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="task4">                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="side-box">
+                        <div class="deadlines-title"><b>Deadlines</b></div>
+                        <ul class="deadlines-list">
+                        </ul>
+                    </div>
+                </div>
+                <div class="subjects-row">
+                    <div class="subject-card">
+                        <div class="subject-title">Subject <i class="fa fa-book-open"></i></div>
+                        <div class="subject-actions"><i class="fa fa-video"></i></div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-title">Subject <i class="fa fa-book-open"></i></div>
+                        <div class="subject-actions"><i class="fa fa-video"></i></div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-title">Subject <i class="fa fa-book-open"></i></div>
+                        <div class="subject-actions"><i class="fa fa-video"></i></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
