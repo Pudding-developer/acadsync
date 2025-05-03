@@ -1,46 +1,25 @@
-from flask import Flask, render_template
+from flask import Flask, send_from_directory
+from backend.api.api import api_blueprint
 
-app = Flask(
-    __name__,
-    template_folder='project/templates',
-    static_folder='project/static'
-)
+app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
+app.register_blueprint(api_blueprint)
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
+@app.get("/")
+def render_landing_page():
+    return send_from_directory("templates", "index.html")
 
-@app.route('/homepage')
-def homepage():
-    return render_template('homepage.html')
+@app.get("/static/<path:path>")
+def static_files_rendering(path):
+    return send_from_directory("static", path)
 
-@app.route('/classes')
-def classes():
-    return render_template('classes.html')
+@app.get("/<path:path>")
+def render_html_templates(path):
+    if not path.endswith(".html"):
+        return send_from_directory("templates", path + ".html")
+    return send_from_directory("templates", path)
 
-@app.route('/deadlines')
-def deadline():
-    return render_template('deadline.html')
-
-@app.route('/settings')
-def settings():
-    return render_template('settings.html')
-
-@app.route('/logout')
-def logout():
-    return render_template('logout.html')
-
-@app.route('/subject')
-def subject():
-    return render_template('subject.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
