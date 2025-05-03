@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>AcadSync</title>
-  <link rel="stylesheet" href="\static\style.css">
-</head>
-<body>
-  <div class="container">
-    <!-- Left Side: Image & Text -->
-    <div class="left">
-      <div class="overlay">
-        <button class="join-btn">Join AcadSync</button>
-        <h1>
-          Elevate Your <br>
-        Learning-Seamless <br>
-          Collaboration,<br>
-          Smarter Studying,<br>
-            Stronger <br>
-          Connections <br>
-        </h1>
-      </div>
-    </div>
-    <!-- Right Side: Sign Up Card -->
-    <div class="right">
-      <div class="signup-card">
-        <div class="illustration">
-          <!-- Placeholder for Illustration SVG/Image -->
-          <img src="/static/img/logo.png" alt="logo"  class="logo">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AcadSync</title>
+    <link rel="stylesheet" href="\static\style.css" />
+    <script src="/static/script/redirect_gsuite_login.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Side: Image & Text -->
+      <div class="left">
+        <div class="overlay">
+          <button class="join-btn">Join AcadSync</button>
+          <h1>
+            Elevate Your <br />
+            Learning-Seamless <br />
+            Collaboration,<br />
+            Smarter Studying,<br />
+            Stronger <br />
+            Connections <br />
+          </h1>
         </div>
-        <h2>AcadSync</h2>
-        <p class="welcome">Welcome to AcadSync</p>
-        <h3>Sign Up</h3>
-        <button class="account-btn">Create an Account</button>
-        <button class="gmail-btn">
-          <img src="\static\img\gmail intro.png" alt="Gmail" class="gmail-icon">
-      <span class="gmail-text">Sign up with Gmail</span>
-        </button>
+      </div>
+      <!-- Right Side: Sign Up Card -->
+      <div class="right">
+        <div class="signup-card">
+          <div class="illustration">
+            <!-- Placeholder for Illustration SVG/Image -->
+            <img src="/static/img/logo.png" alt="logo" class="logo" />
+          </div>
+          <h2>AcadSync</h2>
+          <p class="welcome">Welcome to AcadSync</p>
+          <h3>Sign Up</h3>
+          <button class="account-btn">Create an Account</button>
+          <button class="gmail-btn" onclick="redirect_gsuite_login()">
+            <img
+              src="\static\img\gmail intro.png"
+              alt="Gmail"
+              class="gmail-icon"
+            />
+            <span class="gmail-text">Sign up with Gmail</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
