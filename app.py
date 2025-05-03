@@ -22,4 +22,4 @@ def render_html_templates(path):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
