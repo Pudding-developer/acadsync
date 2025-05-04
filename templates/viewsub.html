@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Subject</title>
+    <link rel="stylesheet" href="/static/subject.css">
+    <link rel="stylesheet" href="/static/viewsub.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-profile">
+                <img src="/static/img/logo.png" alt="Profile Icon" class="profile-icon">
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/homepage" class="active">
+                    <img src="/static/img/home.png" alt="Home Icon" class="nav-icon">
+                    <span>Home</span>
+                </a>
+                <a href="/classes">
+                    <img src="/static/img/classroom.png" alt="Classes Icon" class="nav-icon">
+                    <span>Classes</span>
+                </a>
+                <a href="/deadlines">
+                    <img src="/static/img/deadlines.png" alt="Deadlines Icon" class="nav-icon">
+                    <span>Deadlines</span>
+                </a>
+                <a href="/settings">
+                    <img src="/static/img/settings.png" alt="Settings Icon" class="nav-icon">
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="logout">
+                <a href="/logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="background-img"></div>
+                <div class="header-right">
+                    <img src="/static/img/profile 2.png" alt="profile-2" class="profile-2">
+                    <span>Name of the Student</span>
+                </div>
+            </header>
+            <h1 class="subject-title">Subject</h1>
+            <section class="subject-buttons">
+                <div class="dropdown">
+                    <a href="javascript:void(0)" class="subject-button resources-button" onclick="toggleDropdown()">
+                        <i class="fa fa-book"></i>
+                        <span>Resources/Modules</span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="/lesson1">Lesson 1</a>
+                        <a href="/lesson2">Lesson 2</a>
+                        <a href="/lesson3">Lesson 3</a>
+                        <a href="/project-proposal">Project Proposal Guidelines</a>
+                        <a href="/additional-materials">Additional Materials</a>
+                    </div>
+                </div>
+                <a href="/messenger" class="subject-button messenger-button">
+                    <img src="/static/img/messenger logo.png" alt="Messenger Logo" class="button-icon">
+                    <span style="transform: translateX(-18px);">Messenger</span> 
+                </a>
+                <a href="/google-classroom" class="subject-button classroom-button">
+                    <i class="fa fa-users"></i>
+                    <span>Google Classroom</span>
+                </a>
+                <a href="/gmail" class="subject-button gmail-button">
+                    <i class="fa fa-envelope"></i>
+                    <span>Gmail</span>
+                </a>
+            </section>
+        </main>
+    </div>
+    <script src="/static/viewsub.js"></script>
+</body>
+</html>
