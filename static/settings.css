@@ -120,6 +120,7 @@ body, html {
     border-radius: 50%; /* Make the image circular */
     object-fit: cover; /* Ensure the image fits within the circle */
 }
+
 .dashboard-header {
     margin-bottom: 20px;
 }
@@ -132,11 +133,31 @@ body, html {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.settings-header {
-    font-size: 24px;
+/* Profile Settings Button */
+.settings-header-button {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
     font-weight: bold;
     color: #4a4a8a;
+    background-color: #dcdcf2;
+    padding: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
     margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.settings-header-button:hover {
+    background-color: #c4c4e8;
+    transform: translateY(-2px);
+}
+
+.settings-header-button h2 {
+    margin: 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -200,4 +221,42 @@ body, html {
     top: 1px;
     left: 1px;
     transition: left 0.3s;
+}
+
+/* Show dropdown content when active */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e6e6fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content.active {
+    display: flex; /* Show the dropdown when active */
+}
+/* Dropdown item */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #4a4a8a;
+    font-size: 16px;
+    background-color: #dcdcf2;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #c4c4e8;
+}
+
+/* Show dropdown content when active */
+.settings-header.active .dropdown-content {
+    display: flex;
 }
