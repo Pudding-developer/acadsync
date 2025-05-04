@@ -56,6 +56,11 @@
             event.preventDefault(); // Prevent default anchor behavior
             window.location.href = '/deadlines'; // Navigate to deadlines.html
         });
+        const logoutLink = document.querySelector('.logout a'); // Select the logout link
+        logoutLink.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            window.location.href = '/logout.html'; // Navigate to logout.html
+});
     });
 </script>
             </div>
