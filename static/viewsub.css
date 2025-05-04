@@ -1,0 +1,266 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f8;
+    color: #4a4a4a;
+}
+/* Top Header */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url('/static/img/bg for log in.png') no-repeat center center;
+    background-size: cover; /* Ensure the background image covers the header */
+    height: 200px;
+    margin-bottom: 20px;
+    padding: 0 20px; /* Add padding for spacing */
+    box-sizing: border-box;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+    text-align: right;
+}
+
+.profile-2 {
+    order: 2;
+    width: 200px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dashboard-header {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a4a8a;
+}
+
+/* Container */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 150px;
+    background-color: #4a4a8a;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.sidebar-profile {
+    margin-bottom: 50px;
+}
+
+.profile-icon {
+    width: 190px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s, color 0.3s;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.sidebar-nav a:hover {
+    background-color: #3a3a6a;
+    color: #e0e0ff;
+    border-radius: 10px;
+}
+
+.nav-icon {
+    width: 100px;
+    height: 70px;
+}
+
+.logout a {
+    text-decoration: none;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.logout a:hover {
+    background-color: #3a3a6a;
+    border-radius: 5px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-left: 150px;
+    width: calc(100% - 150px);
+    box-sizing: border-box;
+}
+
+/* General styles for subject buttons */
+.subject-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a4a8a;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+.subject-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.subject-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 15px 20px;
+    background-color: #d4d4f5;
+    border-radius: 24px;
+    text-decoration: none;
+    color: #4a4a8a;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.subject-button i {
+    width: 24px;
+    height: 24px;
+}
+
+.subject-button img {
+    width: 32px;
+    height: 32px;
+}
+
+.resources-button img {
+    width: 36px;
+    height: 36px;
+}
+.messenger-button img {
+    width: 42px;
+    height: 42px;
+    transform: translateX(-10px);
+}
+
+.classroom-button img {
+    width: 38px;
+    height: 38px;
+}
+
+.gmail-button img {
+    width: 34px;
+    height: 34px;
+}
+
+.subject-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Specific styles for each button */
+.resources-button {
+    background-color: #d4d4f5;
+}
+
+.resources-button:hover {
+    background-color: #b3b3e6;
+}
+
+.messenger-button {
+    background-color: #d4d4f5;
+}
+
+.messenger-button:hover {
+    background-color: #b3b3e6;
+}
+.classroom-button {
+    background-color: #d4d4f5;
+}
+
+.classroom-button:hover {
+    background-color: #b3b3e6;
+}
+
+.gmail-button {
+    background-color: #d4d4f5;
+}
+
+.gmail-button:hover {
+    background-color: #b3b3e6;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding-left: 40px;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    color: #4a4a8a;
+    font-size: 16px;
+    padding: 10px 15px;
+    background-color: #e6e6fa;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #d4d4f5;
+}
+
+/* Show dropdown content when active */
+.dropdown.active .dropdown-content {
+    display: flex;
+}
