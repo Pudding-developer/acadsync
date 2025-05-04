@@ -6,6 +6,7 @@
     <title>Settings</title>
     <link rel="stylesheet" href="/static/settings.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="/static/settings.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -49,7 +50,7 @@
                     <span>Name of the Student</span>
                 </div>
             </header>
-            <section class="settings-content">
+            <section class="settings-container">
                 <div class="settings-header">
                     <h2><i class="fa fa-user-circle"></i> Profile Settings</h2>
                 </div>
@@ -70,6 +71,33 @@
                         <i class="fa fa-toggle-on"></i>
                         <span>Remember Profile</span>
                         <input type="checkbox" class="toggle-switch" checked>
+                    </div>
+                </div>
+                <div class="settings-header">
+                    <a href="javascript:void(0)" class="settings-header-button" onclick="toggleDropdown()">
+                        <h2><i class="fa fa-bell"></i> Notification Settings</h2>
+                    </a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <span>Email Notifications</span>
+                            <input type="checkbox" class="toggle-switch" checked>
+                        </div>
+                        <div class="dropdown-item">
+                            <span>Upcoming Deadlines</span>
+                            <input type="checkbox" class="toggle-switch" checked>
+                        </div>
+                        <div class="dropdown-item">
+                            <span>Uploaded Resources in Classes</span>
+                            <input type="checkbox" class="toggle-switch" checked>
+                        </div>
+                        <div class="dropdown-item">
+                            <span>Group Chat Notifications</span>
+                            <input type="checkbox" class="toggle-switch" checked>
+                        </div>
+                        <div class="dropdown-item">
+                            <span>Announcements of Professors</span>
+                            <input type="checkbox" class="toggle-switch" checked>
+                        </div>
                     </div>
                 </div>
             </section>
