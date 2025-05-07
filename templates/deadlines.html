@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enrolled Classes</title>
-    <link rel="stylesheet" href="\static\classes.css">
+    <title>Deadlines</title>
+    <link rel="stylesheet" href="/static/deadline.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script type="module" src="/static/script/check_token.js" defer></script>
-    <script type="module" src="/static/script/classes.js" defer></script>
+    <script type="module" src="/static/script/deadlines.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -17,7 +17,7 @@
                 <img src="/static/img/logo.png" alt="Profile Icon" class="profile-icon">
             </div>
             <nav class="sidebar-nav">
-                <a href="/homepage" class="active">
+                <a href="/homepage">
                     <img src="/static/img/home.png" alt="Home Icon" class="nav-icon">
                     <span>Home</span>
                 </a>
@@ -25,7 +25,7 @@
                     <img src="/static/img/classroom.png" alt="Classes Icon" class="nav-icon">
                     <span>Classes</span>
                 </a>
-                <a href="/deadlines">
+                <a href="/deadlines" class="active">
                     <img src="/static/img/deadlines.png" alt="Deadlines Icon" class="nav-icon">
                     <span>Deadlines</span>
                 </a>
@@ -38,25 +38,6 @@
             </div>
         </aside>
 
-        <!-- modal for messenger link assignment -->
-        <div id="add-todo-modal" style="display: none;">
-            <div class="todo-modal-box">
-                <h2 style="margin-bottom: 0px;">Classroom chat link</h2>
-                <h4 style="margin-top: 0px;">CpE 12</h4>
-                <div>
-                    <label>Chat Link</label>
-                    <br/>
-                    <input id="link-input" class="task-input" type="text" placeholder="Messenger, Telegram, Discord link..." width="1000px" />
-                    <br/>
-                    <br/>
-                </div>
-                <div class="button-right-holder">
-                    <button class="cancel" onclick="closeCreateTaskModal()">Cancel</button>
-                    <button class="create" onclick="updateMessengerLink()">Update</button>
-                </div>
-            </div>
-        </div>
-
         <!-- Main Content -->
         <main class="main-content">
             <header class="top-header">
@@ -67,16 +48,30 @@
                 </div>
             </header>
             <section class="dashboard">
-                <div class="dashboard-header">
-                    <h2>ENROLLED CLASSES</h2>
-                </div>
-                <div id="subjects-row" class="subjects-row">
-                    <div class="subject-card">
-                        <div class="subject-title">Subject</div>
-                        <div class="holder">
-                            <button class=" classop view-button">Open Class</button>
-                            <button class="classop view-button">Open Chat</button>
-                            <button class="classop view-button">Edit Chat</button>
+                <div class="content-row">
+                    <div class="todo-box">
+                        <div class="todo-header">To Do:</div>
+                        <div id="task-container" class="todo-container">
+                            <!-- <div class="todo-item">
+                                <div class="todo-icon"><i class="fa fa-pencil"></i></div>
+                                <div class="todo-details">
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="todo-due">Due Date: Time</div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="completed-box">
+                        <div class="completed-header">Completed:</div>
+                        <div id="finished-container" class="todo-container">
+                            <!-- <div class="completed-item">
+                                <div class="completed-icon"><i class="fa fa-check-circle"></i></div>
+                                <div class="completed-details">
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

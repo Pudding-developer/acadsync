@@ -66,7 +66,7 @@ body, html {
 }
 
 .nav-icon {
-    width: 100px;
+    width: 130px;
     height: 70px;
 }
 
@@ -111,21 +111,23 @@ body, html {
 
 .header-right {
     display: flex;
-    align-items: center;
-    gap: 0px;
+    align-items: center; /* Vertically align the text and icon */
+    justify-content: flex-start; /* Align content to the left */
+    gap: 0px; /* Add space between the text and the icon */
     color: #fff;
-    font-size: 18px;
+    font-size: 18px; /* Adjust font size for the text */
     font-weight: bold;
-    margin-right: 20px;
-    text-align: right;
+    margin-right: 20px; /* Adjust margin to position the content */
+    text-align: right; /* Ensure text aligns properly */
+    gap: 1rem;
 }
 
 .profile-2 {
-    order: 2;
-    width: 200px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
+    order: 2; /* Move the profile icon to the right of the text */
+    width: 80px; /* Adjust size for better alignment */
+    height: 80px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image fits within the circle */
 }
 
 .dashboard-header {
@@ -140,7 +142,7 @@ body, html {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping to the next row */
     gap: 20px; /* Add consistent spacing between cards */
-    justify-content: space-between; /* Distribute cards evenly */
+    justify-content: start; /* Distribute cards evenly */
     margin-top: 20px;
     align-items: stretch; /* Ensure all cards have the same height */
 }
@@ -150,16 +152,23 @@ body, html {
     flex: 1 1 auto; /* Allow cards to flex naturally */
     background-color: #dcdcf2;
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-width: 200px; /* Ensure a minimum width */
-    max-width: 250px; /* Ensure a maximum width */
-    height: 150px; /* Set a fixed height */
+    min-width: 30rem;
+    max-width: 30rem;
+    /* height: 100px; */
 }
+
+.subject-card > .holder > .classop {
+    width: 9rem;
+}
+
 /* Subject Title */
 .subject-title {
     font-size: 20px;
@@ -186,4 +195,87 @@ body, html {
 
 .view-button:hover {
     background-color: #bcbce2;
+}
+
+.disabled-button {
+    cursor: default;
+    background-color: #c9c9e0;
+}
+
+.disabled-button:hover {
+    background-color: #c9c9e0;
+}
+
+
+#add-todo-modal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#add-todo-modal > .todo-modal-box {
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.task-input {
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    width: 25rem;
+}
+
+.due-input {
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    width: 25rem;
+}
+
+
+.button-right-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 1rem;
+}
+
+.button-right-holder > button {
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    width: 5rem;
+    height: 2rem;
+}
+
+.button-right-holder > button.create {
+    background-color: #4a4a8a;
+    color: white;
+}
+
+.button-right-holder > button.cancel {
+    background-color: #8a4a4a;
+    color: white;
+}
+
+
+.button-right-holder > button:active {
+    background-color: rgb(226, 226, 226);
+    color: black;
 }

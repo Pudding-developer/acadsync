@@ -1,107 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Logout Confirmation</title>
     <style>
-        /* CSS styling for mini popup */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: url('/static/img/FINAL PIC INTRO.png') no-repeat center center fixed;
-            background-size: cover;
-        }
-    
-        .popup {
-            background-color: rgba(236, 234, 255, 0.8); /* Brighter purple with higher opacity */
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 400px;
-            height: 150px;
-            position: relative; /* Ensure buttons can be positioned relative to the popup */
-        }
-        
-        .popup p {
-            font-size: 30px;
-            font-weight: bold;
-            color: #4A4A8A; /* Darker purple for text */
-            margin-bottom: 20px; /* Add spacing between text and buttons */
-        }
-        
-        .popup button {
-            background-color: #6A5ACD; /* Purple for "Yes" button */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin: 5px;
-            font-size: 14px;
-            font-weight: bold;
-        }
+      /* CSS styling for mini popup */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url("/static/img/FINAL PIC INTRO.png") no-repeat center
+          center fixed;
+        background-size: cover;
+      }
 
-        .popup .confirm {
-            position: absolute;
-            bottom: 20px;
-            left: 25%; /* Adjusted to create a gap */
-            width: 100px; /* Adjust width for "Yes" button */
-        }
+      .popup {
+        background-color: rgba(
+          236,
+          234,
+          255,
+          0.8
+        ); /* Brighter purple with higher opacity */
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 400px;
+        height: 150px;
+        position: relative; /* Ensure buttons can be positioned relative to the popup */
+      }
 
-        .popup .cancel {
-            position: absolute;
-            bottom: 20px;
-            right: 25%; /* Adjusted to create a gap */
-            width: 100px; /* Adjust width for "No" button */
-        }
-        .popup button.cancel {
-            background-color: #A9A9A9; /* Gray for "No" button */
-            color: white;
-        }
-    
-        .popup button:hover {
-            opacity: 0.9; /* Slight hover effect */
-        }
+      .popup p {
+        font-size: 30px;
+        font-weight: bold;
+        color: #4a4a8a; /* Darker purple for text */
+        margin-bottom: 20px; /* Add spacing between text and buttons */
+      }
+
+      .popup button {
+        background-color: #6a5acd; /* Purple for "Yes" button */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        margin: 5px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .popup .confirm {
+        position: absolute;
+        bottom: 20px;
+        left: 25%; /* Adjusted to create a gap */
+        width: 100px; /* Adjust width for "Yes" button */
+      }
+
+      .popup .cancel {
+        position: absolute;
+        bottom: 20px;
+        right: 25%; /* Adjusted to create a gap */
+        width: 100px; /* Adjust width for "No" button */
+      }
+      .popup button.cancel {
+        background-color: #a9a9a9; /* Gray for "No" button */
+        color: white;
+      }
+
+      .popup button:hover {
+        opacity: 0.9; /* Slight hover effect */
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Logout confirmation popup -->
     <div class="popup">
-        <p>Are you sure you want to log out?</p>
-        <button class="confirm" onclick="logout()">Yes</button>
-        <button class="cancel" onclick="goToHomepage()">No</button>
+      <p>Are you sure you want to log out?</p>
+      <button class="confirm" onclick="logout()">Yes</button>
+      <button class="cancel" onclick="goToHomepage()">No</button>
 
-        <script>
-            function goToHomepage() {
-            window.location.href = '/homepage'; // Redirect to homepage
-            }
-        </script>
+      <script>
+        function goToHomepage() {
+          window.location.href = "/homepage"; // Redirect to homepage
+        }
+      </script>
     </div>
 
     <script>
-        // Logout logic
-        function logout() {
-            alert("Logged out successfully!");
-            closeWindow(); // Close the mini window
-        }
+      // Logout logic
+      function logout() {
+        alert("Logged out successfully!");
+        window.location.href = "/api/auth/logout";
+        window.close();
+      }
 
-        // Close the mini window
-        function closeWindow() {
-            window.close();
-        }
-
-        // Automatically resize the window to fit the popup
-        window.onload = function() {
-            window.resizeTo(350, 200); // Adjust dimensions as needed
-            window.moveTo((screen.width - 350) / 2, (screen.height - 200) / 2); // Center the window
-        };
+      // Automatically resize the window to fit the popup
+      window.onload = function () {
+        window.resizeTo(350, 200); // Adjust dimensions as needed
+        window.moveTo((screen.width - 350) / 2, (screen.height - 200) / 2); // Center the window
+      };
     </script>
-</body>
+  </body>
 </html>

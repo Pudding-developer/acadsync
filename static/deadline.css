@@ -63,7 +63,7 @@ body, html {
 }
 
 .nav-icon {
-    width: 100px;
+    width: 130px;
     height: 70px;
 }
 
@@ -109,15 +109,17 @@ body, html {
     font-weight: bold;
     margin-right: 20px; /* Adjust margin to position the content */
     text-align: right; /* Ensure text aligns properly */
+    gap: 1rem;
 }
 
 .profile-2 {
-    order: 2; 
-    width: 200px; 
-    height: 150px;
-    border-radius: 50%; 
-    object-fit: cover; 
+    order: 2; /* Move the profile icon to the right of the text */
+    width: 80px; /* Adjust size for better alignment */
+    height: 80px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image fits within the circle */
 }
+
 /* Content Row */
 .content-row {
     display: flex;
@@ -170,8 +172,14 @@ body, html {
 }
 
 .todo-icon, .completed-icon {
-    font-size: 24px;
+    font-size: 16px;
     color: #4a4a8a;
+}
+
+.todo-container {
+    max-height: 32rem;
+    overflow: auto;
+    scrollbar-width: thin;
 }
 
 .todo-details, .completed-details {

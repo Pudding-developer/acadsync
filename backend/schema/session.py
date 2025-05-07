@@ -4,5 +4,6 @@ from sqlalchemy import String
 from sqlalchemy import Integer
 
 class Session:
-    id = Column(String, primary_key=True, unique=True)
-    user_id = Column(Integer)
+    session_token = Column(String, primary_key=True, unique=True)
+    api_token = Column(String, unique=True)
+
