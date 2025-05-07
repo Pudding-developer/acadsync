@@ -83,3 +83,26 @@ export async function setMessengerLink(id, link, afterCallback) {
     console.error(err);
   }
 }
+
+export async function getUnreadClasses() {
+  try {
+    const response = await fetch(`/api/gsuite-features/notification/unread`, {
+      credentials: "include",
+    });
+    const responseData = await response.json();
+    return responseData;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function markRead(classId, afterCallback) {
+  try {
+    await fetch(`/api/gsuite-features/notification/read/${classId}`, {
+      credentials: "include",
+    });
+    afterCallback && afterCallback();
+  } catch (err) {
+    console.error(err);
+  }
+}

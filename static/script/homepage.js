@@ -3,7 +3,9 @@ import {
   finishTask,
   getProfileData,
   getClassroomData,
-  getTasks
+  getTasks,
+  getUnreadClasses,
+  markRead
 } from "./modules/gsuitefeatures.js";
 
 function formatCustomDate(dateStr) {
@@ -51,11 +53,20 @@ function submitTask() {
   });
 }
 
+function goClass(alternateLink, classid) {
+  window.open(alternateLink, '_blank');
+  markRead(classid, () => {
+    const matched = document.getElementById(`notif_${classid}`);
+    if (matched) matched.style.display = "none";
+  });
+}
+
 // allow global access
 window.openCreateTaskModal = openCreateTaskModal;
 window.closeCreateTaskModal = closeCreateTaskModal;
 window.submitTask = submitTask;
 window.finishTask = finishTask;
+window.goClass = goClass;
 
 function loadProfileData(studentData) {
   // loads the name of the student
@@ -88,19 +99,25 @@ function loadSubjects(classroomData) {
     if (classroomData[i].courseState == "ACTIVE") {
         const subjectCardDiv = document.createElement("div");
         const subjectTitleDiv = document.createElement("div");
-    
+        const notifNode = document.createElement("div");
+
         // assign css values
         subjectCardDiv.className = "subject-card";
         subjectTitleDiv.className = "subject-title";
+        notifNode.className = "notif";
+        // notifNode.style.display = "none";
     
         // subject title and shii
         subjectTitleDiv.innerHTML = `
+            <div id="notif_${classroomData[i].classid}" class="notif" style="display: none;"></div>
             ${classroomData[i].name}
             <br/><br/>
-            <a href="${classroomData[i].alternateLink}" target="_blank" style="color: inherit; text-decoration: none;">
+            <a onclick="goClass('${classroomData[i].alternateLink}', '${classroomData[i].classid}')" target="_blank" style="color: inherit; text-decoration: none;">
               <i title="Go to Classroom link" class="fa fa-book-open clickable"></i>
             </a>
-            <i title="Go to Messenger Chatroom" class="fas fa-comment clickable"></i>
+            <a href="${classroomData[i].messengerLink}" target="_blank" style="color: inherit; text-decoration: none;">
+              <i title="Go to Messenger Chatroom" class="fas fa-comment clickable"></i>
+            </a>
         `;
 
         // put elements inside their respective tags
@@ -159,6 +176,23 @@ function loadDeadlines(deadlinesList) {
   });
 }
 
+async function monitorUnreadClasses() {
+  // initial load
+  const unreadClass = await getUnreadClasses();
+  for (let unread of unreadClass) {
+    const matchedClass = document.getElementById(`notif_${unread.course_id}`);
+    matchedClass.style.display = "";
+  }
+
+  setInterval(async () => {
+    const unreadClass = await getUnreadClasses();
+    for (let unread of unreadClass) {
+      const matchedClass = document.getElementById(`notif_${unread.course_id}`);
+      matchedClass.style.display = "";
+    }
+  }, 5000);
+}
+
 
 // allows us to use async functions
 (async function () {
@@ -170,6 +204,5 @@ function loadDeadlines(deadlinesList) {
   loadProfileData(studentData);
   loadSubjects(classroomData);
   loadDeadlines(tasks);
-
-  console.log(tasks);
+  monitorUnreadClasses();
 })();

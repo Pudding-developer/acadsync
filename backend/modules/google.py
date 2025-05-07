@@ -3,6 +3,7 @@ from backend.database.connection import SessionLocal
 from backend.database.models.sessions import Sessions
 from backend.database.models.assignments import ToDo
 from backend.database.models.classroom import Classroom
+from backend.database.models.notification import Notifications
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
@@ -22,6 +23,7 @@ SCOPES = [
     'https://www.googleapis.com/auth/classroom.courses.readonly',
     'https://www.googleapis.com/auth/classroom.student-submissions.me.readonly',
     'https://www.googleapis.com/auth/classroom.coursework.me',
+    'https://www.googleapis.com/auth/classroom.announcements',
     'https://www.googleapis.com/auth/userinfo.email',
     'https://www.googleapis.com/auth/userinfo.profile',
 ]
@@ -400,3 +402,224 @@ def load_user_courses(auth_token: str):
                     )
                 ).delete()
                 db.commit()
+
+
+def get_latest_user_announcements(auth_token: str):
+    db = SessionLocal()
+    try:
+        session = db.query(Sessions).filter(
+            Sessions.auth_token == auth_token
+        ).first()
+
+        if session is None:
+            return
+
+        creds = Credentials(
+            token=session.access_token,
+            refresh_token=session.refresh_token,
+            token_uri=session.token_uri,
+            client_id=session.client_id,
+            client_secret=session.client_secret,
+            scopes=session.scopes.split(",")
+        )
+
+        current_user_courses = get_user_courses(auth_token)
+        current_user_courses_ids = [course["classid"] for course in current_user_courses]
+
+        service = build('classroom', 'v1', credentials=creds)
+        course_announcement_latest = []
+        for course_id in current_user_courses_ids:
+            response = service.courses().announcements().list(
+                courseId=course_id,
+                orderBy='updateTime desc',
+                pageSize=1
+            ).execute()
+
+            announcements = response.get('announcements', [])
+            if announcements:
+                course_announcement_latest.append({
+                    "classid": course_id,
+                    "latest_announcement": announcements[0]["id"]
+                })
+
+        return course_announcement_latest
+    finally:
+        db.close()
+
+
+def get_latest_course_announcement(auth_token: str, course_id: str):
+    db = SessionLocal()
+    try:
+        session = db.query(Sessions).filter(
+            Sessions.auth_token == auth_token
+        ).first()
+
+        if session is None:
+            return
+
+        creds = Credentials(
+            token=session.access_token,
+            refresh_token=session.refresh_token,
+            token_uri=session.token_uri,
+            client_id=session.client_id,
+            client_secret=session.client_secret,
+            scopes=session.scopes.split(",")
+        )
+
+        service = build('classroom', 'v1', credentials=creds)
+        response = service.courses().announcements().list(
+            courseId=course_id,
+            orderBy='updateTime desc',
+            pageSize=1
+        ).execute()
+
+        announcements = response.get('announcements', [])
+        if announcements:
+            return { "classid": course_id, "latest_announcement": announcements[0]["id"] }
+        return None
+
+    finally:
+        db.close()
+
+
+def load_latest_user_announcements(auth_token: str):
+    db = SessionLocal()
+    try:
+        session = db.query(Sessions).filter(
+            Sessions.auth_token == auth_token
+        ).first()
+
+        if session is None:
+            return
+
+        course_latest_announcement = get_latest_user_announcements(
+            auth_token
+        )
+
+        # match and load the current user's notifications
+        for announce in course_latest_announcement:
+            course = db.query(Notifications).filter(
+                and_(
+                    Notifications.owner == session.user_email,
+                    Notifications.course_id == announce["classid"]
+                )
+            ).first()
+
+            if course is not None:
+                course.notification_id = announce["latest_announcement"]
+                course.is_latest = True
+                db.commit()
+            else:
+                course = Notifications(
+                    owner=session.user_email,
+                    course_id=announce["classid"],
+                    notification_id=announce["latest_announcement"],
+                    is_latest=True
+                )
+
+                db.add(course)
+
+            db.commit()
+            db.refresh(course)
+
+    finally:
+        db.close()
+
+def watch_user_announcements(auth_token: str):
+    db = SessionLocal()
+    try:
+        session = db.query(Sessions).filter(
+            Sessions.auth_token == auth_token
+        ).first()
+
+        if session is None:
+            return
+
+        course_latest_announcement = get_latest_user_announcements(
+            auth_token
+        )
+
+        # match and load the current user's notifications
+        for announce in course_latest_announcement:
+            course = db.query(Notifications).filter(
+                and_(
+                    Notifications.owner == session.user_email,
+                    Notifications.course_id == announce["classid"]
+                )
+            ).first()
+
+            if course is not None:
+                if course.notification_id != announce["latest_announcement"]:
+                    course.is_latest = False
+                db.commit()
+            else:
+                course = Notifications(
+                    owner=session.user_email,
+                    course_id=announce["classid"],
+                    notification_id=announce["latest_announcement"],
+                    is_latest=False
+                )
+
+                db.add(course)
+
+            db.commit()
+            db.refresh(course)
+
+    finally:
+        db.close()
+
+
+def get_unread_notifs(auth_token: str):
+    db = SessionLocal()
+    try:
+        session = db.query(Sessions).filter(
+            Sessions.auth_token == auth_token
+        ).first()
+
+        if session is None:
+            return { "message": "Unauthenticated" }
+
+        unsynced = db.query(Notifications).filter(
+            and_(
+                Notifications.owner == session.user_email,
+                Notifications.is_latest == False,
+            )
+        ).all()
+        return [model_to_dict(model) for model in unsynced]
+
+    finally:
+        db.close()
+
+
+def mark_course_as_viewed(auth_token: str, course_id: str):
+    db = SessionLocal()
+    try:
+        session = db.query(Sessions).filter(
+            Sessions.auth_token == auth_token
+        ).first()
+
+        if session is None:
+            return
+
+        latest_course_announcement = get_latest_course_announcement(
+            auth_token, course_id
+        )
+
+        notification = db.query(Notifications).filter(
+            and_(
+                Notifications.owner == session.user_email,
+                Notifications.course_id == course_id
+            )
+        ).first()
+
+        if latest_course_announcement is None or \
+            notification is None:
+            return
+
+        notification.is_latest = True
+        notification.notification_id = latest_course_announcement["latest_announcement"]
+        return { "message": "Marked notification as viewed" }
+
+    finally:
+        db.close()
+

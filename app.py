@@ -33,6 +33,7 @@ if __name__ == '__main__':
         from backend.database.models.sessions import Sessions
         from backend.database.models.assignments import ToDo
         from backend.database.models.classroom import Classroom
+        from backend.database.models.notification import Notifications
         Base.metadata.create_all(Engine)
         print("[+] Database created!")
 

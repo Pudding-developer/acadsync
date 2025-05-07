@@ -4,6 +4,8 @@ from backend.modules.google import get_user_tasks
 from backend.modules.google import create_user_task
 from backend.modules.google import finish_user_task
 from backend.modules.google import set_course_link
+from backend.modules.google import get_unread_notifs
+from backend.modules.google import mark_course_as_viewed
 
 from flask import Blueprint
 from flask import request
@@ -74,3 +76,26 @@ def add_messenger_link(id: str):
         return { "message": "Messenger link is not set" }
 
     return set_course_link(auth_token, id, messenger_link)
+
+
+#########################
+#  Notification routes  #
+#########################
+@gsuite_features_blueprint.get("/notification/unread")
+def get_unread_notifs_route():
+    auth_token = request.cookies.get("auth_token")
+    if auth_token is None:
+        return { "messsage": "Not authenticated" }
+
+    return get_unread_notifs(auth_token)
+
+
+@gsuite_features_blueprint.get("/notification/read/<id>")
+def read_notif(id):
+    auth_token = request.cookies.get("auth_token")
+    if auth_token is None:
+        return { "messsage": "Not authenticated" }
+
+    return mark_course_as_viewed(id)
+
+
